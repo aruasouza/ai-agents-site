@@ -30,6 +30,7 @@
             background-color: var(--light);
             color: var(--text);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
@@ -60,30 +61,43 @@
             display: flex;
             align-items: center;
             text-decoration: none;
+            gap: 15px;
         }
 
-        .logo-icon {
-            width: 50px;
-            height: 50px;
-            background-color: var(--primary);
-            border-radius: 50%;
+        .logo-image {
+            height: 60px;
+            width: 60px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            background: var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 10px;
-            color: var(--white);
-            font-size: 24px;
-            font-weight: bold;
+        }
+
+        .logo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .logo-text {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--primary);
+            display: flex;
+            flex-direction: column;
         }
 
-        .logo-text span {
-            color: var(--accent);
+        .logo-text .company-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+
+        .logo-text .company-tagline {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-weight: 500;
         }
 
         .nav-menu {
@@ -138,12 +152,27 @@
             color: var(--white);
             padding: 180px 0 100px;
             text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, transparent 20%, var(--primary) 150%);
+            opacity: 0.3;
+            pointer-events: none;
         }
 
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 20px;
             line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            position: relative;
         }
 
         .hero p {
@@ -151,6 +180,7 @@
             max-width: 700px;
             margin: 0 auto 40px;
             opacity: 0.9;
+            position: relative;
         }
 
         .cta-button {
@@ -165,6 +195,8 @@
             transition: var(--transition);
             box-shadow: 0 4px 15px rgba(13, 172, 124, 0.3);
             border: 2px solid var(--accent);
+            position: relative;
+            z-index: 1;
         }
 
         .cta-button:hover {
@@ -173,8 +205,8 @@
             box-shadow: 0 6px 20px rgba(13, 172, 124, 0.4);
         }
 
-        /* About Section */
-        .about {
+        /* Services Section */
+        .services {
             padding: 100px 0;
             background-color: var(--white);
         }
@@ -199,6 +231,115 @@
             border-radius: 2px;
         }
 
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(8, 46, 33, 0.1);
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .service-content {
+            padding: 30px;
+        }
+
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .service-content p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 100px 0;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefits::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            transform: rotate(30deg);
+            pointer-events: none;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .benefit-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .benefit-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+
         .about-content {
             display: flex;
             align-items: center;
@@ -211,6 +352,19 @@
             overflow: hidden;
             box-shadow: var(--shadow);
             position: relative;
+            border: 5px solid var(--white);
+        }
+
+        .about-image::after {
+            content: "";
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--accent);
+            border-radius: 10px;
+            z-index: -1;
         }
 
         .about-image img {
@@ -245,97 +399,6 @@
             color: var(--primary);
             margin-top: 20px;
             display: block;
-        }
-
-        /* Services Section */
-        .services {
-            padding: 100px 0;
-            background-color: var(--light);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .service-card {
-            background-color: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .service-icon {
-            background-color: var(--primary);
-            color: var(--white);
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-        }
-
-        .service-content {
-            padding: 30px;
-        }
-
-        .service-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-
-        .service-content p {
-            color: var(--text-light);
-            margin-bottom: 20px;
-        }
-
-        /* Benefits Section */
-        .benefits {
-            padding: 100px 0;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: var(--white);
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .benefit-card {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 30px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: var(--transition);
-        }
-
-        .benefit-card:hover {
-            transform: translateY(-5px);
-            background-color: rgba(255, 255, 255, 0.15);
-        }
-
-        .benefit-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: var(--accent);
-        }
-
-        .benefit-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
         }
 
         /* Contact Section */
@@ -386,61 +449,56 @@
             color: var(--text);
         }
 
-        .contact-form {
+        .whatsapp-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             background-color: var(--light);
             padding: 40px;
             border-radius: 10px;
             box-shadow: var(--shadow);
+            text-align: center;
+            border: 1px solid rgba(8, 46, 33, 0.1);
         }
 
-        .form-group {
-            margin-bottom: 20px;
+        .whatsapp-container h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 30px;
         }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--text);
+        .whatsapp-container p {
+            color: var(--text-light);
+            margin-bottom: 30px;
+            max-width: 400px;
         }
 
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(13, 172, 124, 0.2);
-        }
-
-        .form-group textarea {
-            height: 150px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            background-color: var(--primary);
-            color: var(--white);
-            border: none;
-            padding: 15px 30px;
-            border-radius: 5px;
-            font-size: 1rem;
+        .whatsapp-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #25D366;
+            color: white;
+            padding: 18px 35px;
+            border-radius: 30px;
+            text-decoration: none;
             font-weight: 600;
-            cursor: pointer;
+            font-size: 1.2rem;
             transition: var(--transition);
-            width: 100%;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            border: none;
+            gap: 10px;
         }
 
-        .submit-btn:hover {
-            background-color: var(--secondary);
+        .whatsapp-button:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(18, 140, 126, 0.4);
+        }
+
+        .whatsapp-button i {
+            font-size: 1.5rem;
         }
 
         /* Footer */
@@ -457,25 +515,70 @@
             margin-bottom: 40px;
         }
 
-        .footer-logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--white);
+        .footer-about {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .footer-logo span {
-            color: var(--accent);
+        .footer-logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .footer-logo-image {
+            height: 60px;
+            width: 60px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-logo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .footer-logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo-text .company-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.2;
+        }
+
+        .footer-logo-text .company-tagline {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.8);
+            font-weight: 500;
         }
 
         .footer-about p {
             opacity: 0.8;
             margin-bottom: 20px;
+            text-align: center;
         }
 
         .social-icons {
             display: flex;
             gap: 15px;
+            justify-content: center;
         }
 
         .social-icons a {
@@ -502,6 +605,7 @@
             margin-bottom: 20px;
             position: relative;
             padding-bottom: 10px;
+            text-align: center;
         }
 
         .footer-links h4::after,
@@ -509,7 +613,8 @@
             content: '';
             position: absolute;
             bottom: 0;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             width: 50px;
             height: 2px;
             background-color: var(--accent);
@@ -517,6 +622,7 @@
 
         .footer-links ul {
             list-style: none;
+            text-align: center;
         }
 
         .footer-links li {
@@ -533,7 +639,6 @@
         .footer-links a:hover {
             opacity: 1;
             color: var(--accent);
-            padding-left: 5px;
         }
 
         .newsletter-form {
@@ -622,6 +727,14 @@
             .section-title {
                 font-size: 2rem;
             }
+            
+            .logo-text .company-name {
+                font-size: 1.2rem;
+            }
+            
+            .logo-text .company-tagline {
+                display: none;
+            }
         }
 
         @media (max-width: 480px) {
@@ -638,8 +751,17 @@
                 font-size: 1.6rem;
             }
             
-            .contact-form {
+            .whatsapp-container {
                 padding: 25px;
+            }
+            
+            .logo-image {
+                height: 50px;
+                width: 50px;
+            }
+            
+            .logo-text .company-name {
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -649,8 +771,13 @@
     <header>
         <div class="container header-container">
             <a href="#" class="logo">
-                <div class="logo-icon">AI</div>
-                <div class="logo-text">Aruã Souza <span>Agentes Inteligentes</span></div>
+                <div class="logo-image">
+                    <img src="logo.png" alt="Logo Aruã Souza Agentes Inteligentes">
+                </div>
+                <div class="logo-text">
+                    <div class="company-name">Aruã Souza</div>
+                    <div class="company-tagline">Agentes Inteligentes</div>
+                </div>
             </a>
             
             <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -672,7 +799,7 @@
         <div class="container">
             <h1>Transforme suas vendas com Agentes Inteligentes</h1>
             <p>Automatize processos, atenda clientes 24/7 e aumente sua conversão com soluções de inteligência artificial personalizadas para o seu negócio.</p>
-            <a href="https://wa.me/+5548991508677" class="cta-button">Ver Demonstração</a>
+            <a href="#contact" class="cta-button">Solicitar Demonstração</a>
         </div>
     </section>
 
@@ -767,6 +894,7 @@
                     <p>Olá! Sou especialista em desenvolvimento de agentes inteligentes para automação de vendas e atendimento ao cliente. Com mais de 8 anos de experiência no mercado de tecnologia e automação, ajudo empresas a transformarem seus processos comerciais através de soluções inovadoras.</p>
                     <p>Minha missão é simplificar a comunicação entre empresas e clientes, oferecendo ferramentas que trabalham 24 horas por dia, 7 dias por semana, para capturar leads, qualificar oportunidades e resolver dúvidas de forma eficiente.</p>
                     <p>Na Aruã Souza Agentes Inteligentes, desenvolvemos soluções personalizadas que se adaptam às necessidades específicas de cada negócio, garantindo resultados mensuráveis e um retorno sobre investimento rápido.</p>
+                    <span class="signature">Aruã Souza</span>
                 </div>
             </div>
         </div>
@@ -785,8 +913,8 @@
                             <i class="fas fa-phone-alt"></i>
                         </div>
                         <div class="contact-text">
-                            <h4>Telefone</h4>
-                            <p>(48) 99150-8677</p>
+                            <h4>Telefone/WhatsApp</h4>
+                            <p>48 99150-8677</p>
                         </div>
                     </div>
                     
@@ -801,15 +929,13 @@
                     </div>
                 </div>
                 
-                <div class="contact-form">
-                    <h3>Envie uma Mensagem</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Fale com meu agente de IA pelo whatsapp</label>
-                            <a href="https://wa.me/+5548991508677" class="cta-button">Enviar mensagem</a>
-                        </div>
-                        
-                    </form>
+                <div class="whatsapp-container">
+                    <h3>Contato Direto</h3>
+                    <p>Clique no botão abaixo para entrar em contato diretamente pelo WhatsApp. Respondemos rapidamente!</p>
+                    <a href="https://wa.me/5548991508677" target="_blank" class="whatsapp-button">
+                        <i class="fab fa-whatsapp"></i>
+                        Fale pelo WhatsApp
+                    </a>
                 </div>
             </div>
         </div>
@@ -820,14 +946,24 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
-                    <div class="footer-logo">Aruã Souza <span>Agentes Inteligentes</span></div>
+                    <div class="footer-logo-container">
+                        <a href="#" class="footer-logo">
+                            <div class="footer-logo-image">
+                                <img src="logo.png" alt="Logo Aruã Souza Agentes Inteligentes">
+                            </div>
+                            <div class="footer-logo-text">
+                                <div class="company-name">Aruã Souza</div>
+                                <div class="company-tagline">Agentes Inteligentes</div>
+                            </div>
+                        </a>
+                    </div>
                     <p>Especialistas em automação de vendas e atendimento ao cliente através de agentes inteligentes que transformam a experiência do cliente e impulsionam resultados.</p>
-                    <!-- <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <div class="social-icons">
+                        <!-- <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
-                    </div> -->
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a> -->
+                        <a href="https://wa.me/5548991508677"><i class="fab fa-whatsapp"></i></a>
+                    </div>
                 </div>
                 
                 <div class="footer-links">
@@ -840,19 +976,10 @@
                         <li><a href="#contact">Contato</a></li>
                     </ul>
                 </div>
-                
-                <div class="footer-newsletter">
-                    <h4>Newsletter</h4>
-                    <p>Inscreva-se para receber novidades e dicas sobre automação de vendas.</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Seu melhor email">
-                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
-                    </form>
-                </div>
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 Aruã Souza Agentes Inteligentes. Todos os direitos reservados.</p>
+                <p>&copy; 2025 Aruã Souza Agentes Inteligentes. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
